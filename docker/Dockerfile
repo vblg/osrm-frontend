@@ -6,6 +6,7 @@ ENV OSRM_CENTER='45.0454463,38.9709704'
 ENV OSRM_ZOOM='13'
 ENV OSRM_LANGUAGE='ru'
 ENV OSRM_LABEL='Карта'
+ENV NOMINATIM_URL='http://maps.etecar.ru/nominatim/'
 
 # Copy package.json
 RUN mkdir -p /src

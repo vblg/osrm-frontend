@@ -19,6 +19,7 @@ for (const filepath of [leafletOptions, debug]) {
   const CENTER = process.env.OSRM_CENTER || '45.0454463, 38.9709704'
   const BACKEND = process.env.OSRM_BACKEND || 'http://maps.etecar.ru/osrm'
   const LANGUAGE = process.env.OSRM_LANGUAGE || 'ru'
+  const NOMINATIM = process.env.NOMINATIM_URL || 'http://maps.etecar.ru/nominatim/'
 
   // Edit Leaflet Options
   if (BACKEND) options = options.replace(/http[s]?:\/\/router\.project-osrm\.org/, BACKEND)
@@ -37,6 +38,8 @@ for (const filepath of [leafletOptions, debug]) {
     // Leaflet uses LatLng
     else options = options.replace('38.8995, -77.0269', latlng)
   }
+
+  if (NOMINATIM) options = options.replace(`serviceUrl: '//nominatim.openstreetmap.org/'`, `serviceUrl: '${NOMINATIM}'`)
 
   // Save Leaflet Options
   fs.writeFileSync(filepath, options)

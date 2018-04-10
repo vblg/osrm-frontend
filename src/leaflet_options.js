@@ -48,5 +48,8 @@ module.exports = {
     three: satellite,
     four: osm,
     five: osm_de
+  },
+  nominatimOptions: {
+    serviceUrl: 'http://maps.etecar.ru/nominatim/'
   }
 };
