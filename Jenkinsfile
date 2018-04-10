@@ -4,9 +4,9 @@ import ru.etecar.HelmClient
 import ru.etecar.HelmRelease
 import ru.etecar.HelmRepository
 
+checkout scm
 node ('gce-standard-4-ssd') {
     cleanWs()
-    checkout scm
     stage ('Build image'){
         def imageRepo = 'eu.gcr.io/indigo-terra-120510'
         def appName = 'osrm-frontend'
