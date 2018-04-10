@@ -1,11 +1,11 @@
 FROM alpine:3.5
 
 # Enables customized options using environment variables
-ENV OSRM_BACKEND='http://localhost:5000'
-ENV OSRM_CENTER='38.8995,-77.0269'
+ENV OSRM_BACKEND='http://maps.etecar.ru/osrm'
+ENV OSRM_CENTER='45.0454463,38.9709704'
 ENV OSRM_ZOOM='13'
-ENV OSRM_LANGUAGE='en'
-ENV OSRM_LABEL='Car (fastest)'
+ENV OSRM_LANGUAGE='ru'
+ENV OSRM_LABEL='Карта'
 
 # Copy package.json
 RUN mkdir -p /src

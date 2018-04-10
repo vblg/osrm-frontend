@@ -15,10 +15,10 @@ for (const filepath of [leafletOptions, debug]) {
 
   // Define Environment variables
   const ZOOM = process.env.OSRM_ZOOM || 13
-  const LABEL = process.env.OSRM_LABEL || 'Car (fastest)'
-  const CENTER = process.env.OSRM_CENTER || '38.8995, -77.0269'
-  const BACKEND = process.env.OSRM_BACKEND || 'https://router.project-osrm.org'
-  const LANGUAGE = process.env.OSRM_LANGUAGE || 'en'
+  const LABEL = process.env.OSRM_LABEL || 'Карта'
+  const CENTER = process.env.OSRM_CENTER || '45.0454463, 38.9709704'
+  const BACKEND = process.env.OSRM_BACKEND || 'http://maps.etecar.ru/osrm'
+  const LANGUAGE = process.env.OSRM_LANGUAGE || 'ru'
 
   // Edit Leaflet Options
   if (BACKEND) options = options.replace(/http[s]?:\/\/router\.project-osrm\.org/, BACKEND)

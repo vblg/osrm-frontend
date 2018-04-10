@@ -94,7 +94,7 @@ function makeIcon(i, n) {
 }
 
 var plan = new ReversablePlan([], {
-  geocoder: Geocoder.nominatim(),
+  geocoder: Geocoder.nominatim({serviceUrl: 'http://maps.etecar.ru/nominatim/'}),
   routeWhileDragging: true,
   createMarker: function(i, wp, n) {
     var options = {
