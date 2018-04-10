@@ -4,18 +4,20 @@ import ru.etecar.HelmClient
 import ru.etecar.HelmRelease
 import ru.etecar.HelmRepository
 
-checkout scm
 node ('gce-standard-4-ssd') {
     cleanWs()
-    stage ('Build image'){
+    checkout scm
+    stage ('Build image') {
         def imageRepo = 'eu.gcr.io/indigo-terra-120510'
         def appName = 'osrm-frontend'
         def imageTag = "0.0.1-${env.BUILD_NUMBER}"
-        docker.withRegistry(imageRepo, 'google-docker-repo') {
-            sh "docker build . -f docker/Dockerfile -t ${imageRepo}/${appName}:${imageTag} && docker push ${imageRepo}/${appName}:${imageTag}"
-         }    
+        withCredentials([file(credentialsId: 'google-docker-repo', variable: 'CREDENTIALS')]) {
+            sh "docker login -u _json_key -p\"${CREDENTIALS}\" https://eu.gcr.io"
+        }
+        sh "docker build . -f docker/Dockerfile -t ${imageRepo}/${appName}:${imageTag} && docker push ${imageRepo}/${appName}:${imageTag}"
     }
 }
+
 node ('docker-server'){
     Libs utils = new Libs(steps)
     HelmClient helm = new HelmClient(steps)
