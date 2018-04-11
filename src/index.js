@@ -94,6 +94,7 @@ function makeIcon(i, n) {
 }
 
 var plan = new ReversablePlan([], {
+  maxGeocoderTolerance: 10000,
   geocoder: Geocoder.nominatim(leafletOptions.nominatimOptions),
   routeWhileDragging: true,
   createMarker: function(i, wp, n) {
