@@ -12,7 +12,6 @@ node ('gce-standard-4-ssd') {
         def appName = 'osrm-frontend'
         def imageTag = "0.0.1-${env.BUILD_NUMBER}"
         withCredentials([file(credentialsId: 'google-docker-repo', variable: 'CREDENTIALS')]) {
-            echo "${CREDENTIALS}"
             sh "mkdir -p ~/.docker && cat \"${CREDENTIALS}\" > ~/.docker/config.json"
         }
         sh "docker build . -f docker/Dockerfile -t ${imageRepo}/${appName}:${imageTag} && docker push ${imageRepo}/${appName}:${imageTag}"
